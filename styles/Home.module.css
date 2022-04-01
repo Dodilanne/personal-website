@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(8px, 3vw, 30px);
+  padding-left: clamp(8px, 3vw, 30px);
+  padding-right: clamp(8px, 3vw, 30px);
+  min-height: 100vh;
+}
+
+.main {
+  background-color: #f99f38;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.sitButton {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  transform-origin: bottom;
+}
+
+.sitButton:not(.disabled):hover {
+  cursor: pointer;
+}
+
+.sitButton:not(.disabled):active {
+  transform: scaleY(0.8);
+}
+
+.title {
+  white-space: pre;
+  color: white;
+  margin: 0;
+  line-height: 1.15;
+  font-size: clamp(16px, 6vw, 72px);
+  display: flex;
+  text-align: center;
+}
+
+.dogState {
+  font-size: clamp(12px, 3vw, 36px);;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 1em;
+  margin-left: 0.5rem;
+}
