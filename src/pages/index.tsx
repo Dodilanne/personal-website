@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import clsx from "clsx";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
 import styles from "../styles/Home.module.css";
-
-type DogState = "up" | "sitting";
+import { Animator } from "../components/animator";
+import { DogState } from "../types/common";
 
 const Home: NextPage = () => {
   const [dogState, setDogState] = useState<DogState>("up");
+
+  const isUp = useMemo(() => dogState === "up", [dogState]);
 
   const handleSit = () => {
     if (dogState === "up") {
@@ -39,9 +41,18 @@ const Home: NextPage = () => {
           </div>
           e
         </h1>
-        <h2 className={styles.dogState}>
-          {dogState === "sitting" ? "assis" : "debout"}
-        </h2>
+        <Animator
+          startFrame={0}
+          endFrame={isUp ? 3 : 12}
+          fps={isUp ? 4 : 12}
+          loop={isUp}
+          spriteSheet={{
+            path: "/spritesheet.png",
+            width: 17088 / 6,
+            height: 1442 / 6,
+            nFrames: 12,
+          }}
+        />
       </main>
 
       <footer className={styles.footer}>

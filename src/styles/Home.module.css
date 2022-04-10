@@ -33,8 +33,9 @@
 }
 
 .sitButton {
+  color: white;
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
   transform-origin: bottom;
 }
 
@@ -42,8 +43,13 @@
   cursor: pointer;
 }
 
-.sitButton:not(.disabled):active {
+.sitButton:not(.disabled):active,
+.sitButton.disabled {
   transform: scaleY(0.8);
+}
+
+.sitButton.disabled {
+  color: black;
 }
 
 .title {
@@ -57,7 +63,7 @@
 }
 
 .dogState {
-  font-size: clamp(12px, 3vw, 36px);;
+  font-size: clamp(12px, 3vw, 36px);
 }
 
 .grid {
