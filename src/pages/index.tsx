@@ -23,10 +23,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Dodilanne</title>
-        <meta name="description" content="Développeur" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           Bienvenue sur mon{" "}
@@ -39,7 +36,7 @@ const Home: NextPage = () => {
           >
             sit
           </div>
-          e
+          e web
         </h1>
         <Animator
           startFrame={0}
