@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { useInterval } from "../hooks/use-interval.hook";
 import { useAnimationFrame } from "../hooks/use-animation-frame.hook";
 
 interface SpriteSheet {
@@ -16,6 +16,7 @@ interface AnimatorProps {
   startFrame: number;
   endFrame: number;
   fps: number;
+  isUp: boolean;
   loop?: boolean;
 }
 
@@ -24,6 +25,7 @@ export const Animator = ({
   startFrame,
   endFrame,
   fps,
+  isUp,
   loop = true,
 }: AnimatorProps) => {
   const [currentFrame, setCurrentFrame] = useState(0);
@@ -54,11 +56,31 @@ export const Animator = ({
   return (
     <div
       style={{
+        position: "relative",
         marginTop: "4rem",
         width: frameWidth,
         overflow: "hidden",
+        borderRadius: "50%",
+        padding: "1rem",
+        boxSizing: "content-box",
       }}
     >
+      {!isUp && (
+        <motion.div
+          initial={false}
+          layoutId="background"
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            borderRadius: "50%",
+            background: "#f99f38",
+          }}
+          transition={{ type: "spring", duration: 0.75, bounce: 0.25 }}
+        />
+      )}
       <Image
         unoptimized
         layout="fixed"

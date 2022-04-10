@@ -1,1 +1,1 @@
-export type DogState = "up" | "sitting";
+export type DogState = "up" | "transitioning" | "sitting";
