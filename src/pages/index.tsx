@@ -9,8 +9,11 @@ import styles from "../styles/Home.module.css";
 import { Animator } from "../components/animator";
 import { DogState } from "../types/common";
 import { Confettis } from "../components/confettis";
+import { useRouter } from "next/router";
+import { LocaleSwitcher } from "../components/locale-switcher";
 
 const Home: NextPage = () => {
+  const router = useRouter();
   const [dogState, setDogState] = useState<DogState>("up");
   const [triggerConfettis, setTriggerConfettis] = useState(false);
 
@@ -30,22 +33,36 @@ const Home: NextPage = () => {
       </Head>
       <AnimateSharedLayout>
         <main className={styles.main}>
+          <LocaleSwitcher />
           <AnimatePresence onExitComplete={() => setDogState("sitting")}>
             {isUp && (
               <motion.div layoutId="background" className={styles.background} />
             )}
           </AnimatePresence>
           <div className={styles.content}>
-            <h1 className={styles.title}>
-              Bienvenue sur mon{" "}
-              <div
-                className={clsx(styles.sitButton, !isUp && styles.disabled)}
-                onClick={handleSit}
-              >
-                sit
-              </div>
-              e web
-            </h1>
+            {router.locale === "fr" ? (
+              <h1 className={styles.title}>
+                Bienvenue sur mon{" "}
+                <div
+                  className={clsx(styles.sitButton, !isUp && styles.disabled)}
+                  onClick={handleSit}
+                >
+                  sit
+                </div>
+                e web
+              </h1>
+            ) : (
+              <h1 className={styles.title}>
+                Welcome to my web
+                <div
+                  className={clsx(styles.sitButton, !isUp && styles.disabled)}
+                  onClick={handleSit}
+                >
+                  sit
+                </div>
+                e
+              </h1>
+            )}
             <div style={{ position: "relative" }}>
               <div
                 style={{
