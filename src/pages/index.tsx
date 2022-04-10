@@ -58,7 +58,7 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Propulsé par Dodi{" "}
+          Dodi{" "}
           <span className={styles.logo}>
             <Image src="/favicon.ico" alt="Jack" width={26} height={26} />
           </span>
