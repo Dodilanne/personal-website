@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@reonomy/react-confetti-explosion": "^1.0.32",
     "clsx": "^1.1.1",
     "framer-motion": "^6.2.9",
     "next": "12.1.4",
