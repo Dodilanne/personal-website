@@ -52,7 +52,7 @@
 }
 
 .sitButton {
-  color: white;
+  color: black;
   text-decoration: none;
   transition: all 0.2s ease;
   transform-origin: bottom;
@@ -65,10 +65,6 @@
 .sitButton:not(.disabled):active,
 .sitButton.disabled {
   transform: scaleY(0.8);
-}
-
-.sitButton.disabled {
-  color: black;
 }
 
 .title {
