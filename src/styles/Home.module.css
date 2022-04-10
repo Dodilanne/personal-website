@@ -79,6 +79,7 @@
   font-size: clamp(16px, 6vw, 72px);
   display: flex;
   text-align: center;
+  min-height: 85px;
 }
 
 .dogState {

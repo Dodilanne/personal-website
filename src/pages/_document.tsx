@@ -17,8 +17,9 @@ class MyDocument extends Document<{ fonts: string[] }> {
             href="https://fonts.gstatic.com"
             crossOrigin="true"
           />
+          {/* eslint-disable-next-line @next/next/google-font-display */}
           <link
-            href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=block"
             rel="stylesheet"
           />
         </Head>
