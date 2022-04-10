@@ -76,10 +76,9 @@
   color: white;
   margin: 0;
   line-height: 1.15;
-  font-size: clamp(16px, 6vw, 72px);
+  font-size: clamp(16px, 10vw, 72px);
   display: flex;
   text-align: center;
-  min-height: 85px;
 }
 
 .dogState {

@@ -65,7 +65,7 @@ export const Animator = ({
     <div
       style={{
         position: "relative",
-        marginTop: "4rem",
+        marginTop: "2rem",
         width: frameWidth,
         overflow: "hidden",
         borderRadius: "50%",

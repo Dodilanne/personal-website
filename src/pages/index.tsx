@@ -49,7 +49,7 @@ const Home: NextPage = () => {
                 >
                   sit
                 </div>
-                e web
+                e
               </h1>
             ) : (
               <h1 className={styles.title}>
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
                   position: "absolute",
                   left: 0,
                   right: 0,
-                  top: "4rem",
+                  top: "2rem",
                   bottom: 0,
                   display: "flex",
                   alignItems: "center",
