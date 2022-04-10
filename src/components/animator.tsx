@@ -1,6 +1,6 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useAnimationFrame } from "../hooks/use-animation-frame.hook";
 
@@ -18,6 +18,7 @@ interface AnimatorProps {
   fps: number;
   isUp: boolean;
   loop?: boolean;
+  onEnd?(): void;
 }
 
 export const Animator = ({
@@ -27,10 +28,17 @@ export const Animator = ({
   fps,
   isUp,
   loop = true,
+  onEnd,
 }: AnimatorProps) => {
   const [currentFrame, setCurrentFrame] = useState(0);
 
   const nFrames = useMemo(() => endFrame - startFrame, [endFrame, startFrame]);
+
+  useEffect(() => {
+    if (!loop && currentFrame + 1 === endFrame && onEnd) {
+      onEnd();
+    }
+  }, [currentFrame, endFrame, onEnd, loop]);
 
   const handleTick = useCallback(() => {
     setCurrentFrame(currentFrame => (currentFrame + 1) % nFrames);

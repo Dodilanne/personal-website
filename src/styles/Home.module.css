@@ -5,6 +5,7 @@
   padding-left: clamp(8px, 3vw, 30px);
   padding-right: clamp(8px, 3vw, 30px);
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .main {

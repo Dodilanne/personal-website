@@ -8,22 +8,13 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import styles from "../styles/Home.module.css";
 import { Animator } from "../components/animator";
 import { DogState } from "../types/common";
-
-const spring = {
-  type: "spring",
-  stiffness: 500,
-  damping: 30,
-  duration: 8000,
-};
+import { Confettis } from "../components/confettis";
 
 const Home: NextPage = () => {
   const [dogState, setDogState] = useState<DogState>("up");
+  const [triggerConfettis, setTriggerConfettis] = useState(false);
 
   const isUp = useMemo(() => dogState === "up", [dogState]);
-  const isTransitioning = useMemo(
-    () => dogState === "transitioning",
-    [dogState]
-  );
   const isSitting = useMemo(() => dogState === "sitting", [dogState]);
 
   const handleSit = () => {
@@ -55,19 +46,36 @@ const Home: NextPage = () => {
               </div>
               e web
             </h1>
-            <Animator
-              isUp={isUp}
-              startFrame={0}
-              endFrame={isSitting ? 12 : 3}
-              fps={isSitting ? 12 : 4}
-              loop={!isSitting}
-              spriteSheet={{
-                path: "/spritesheet.png",
-                width: 17088 / 6,
-                height: 1442 / 6,
-                nFrames: 12,
-              }}
-            />
+            <div style={{ position: "relative" }}>
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: "4rem",
+                  bottom: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Confettis trigger={triggerConfettis} />
+              </div>
+              <Animator
+                isUp={isUp}
+                startFrame={0}
+                endFrame={isSitting ? 12 : 3}
+                fps={isSitting ? 12 : 4}
+                loop={!isSitting}
+                onEnd={() => setTriggerConfettis(true)}
+                spriteSheet={{
+                  path: "/spritesheet.png",
+                  width: 17088 / 6,
+                  height: 1442 / 6,
+                  nFrames: 12,
+                }}
+              />
+            </div>
           </div>
         </main>
       </AnimateSharedLayout>
